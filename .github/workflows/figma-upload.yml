@@ -1,0 +1,24 @@
+name: figma-upload
+on:
+  workflow_dispatch:
+    inputs:
+      jobs:
+        description: "JSON list of [file, url]"
+        required: true
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upload layout images
+        env:
+          JOBS: ${{ inputs.jobs }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          for f, u in json.loads(os.environ["JOBS"]):
+              data = open(f, "rb").read()
+              req = urllib.request.Request(u, data=data, method="POST", headers={"Content-Type": "image/jpeg"})
+              with urllib.request.urlopen(req) as r:
+                  print(f, r.status)
+          PY
