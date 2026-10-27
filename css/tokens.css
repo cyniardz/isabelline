@@ -12,10 +12,8 @@
   --black-60: rgba(11, 10, 10, 0.6);
   --black-15: rgba(11, 10, 10, 0.15);
 
-  --font-title: "Cormorant Garamond", "Noto Serif KR", serif;
-  --font-body: "Inter", "Noto Sans KR", sans-serif;
-  --font-title-kr: "Noto Serif KR", "Cormorant Garamond", serif;
-  --font-body-kr: "Noto Sans KR", "Inter", sans-serif;
+  --font-title: "Cormorant Garamond", "Hahmlet", serif;
+  --font-body: "Inter", "Pretendard Variable", "Pretendard", sans-serif;
 
   --size-display: clamp(48px, 5.8vw, 84px);
   --size-h1: clamp(40px, 4.4vw, 64px);

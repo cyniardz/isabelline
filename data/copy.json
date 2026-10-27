@@ -1,25 +1,39 @@
 {
   "optionSets": {
     "size": {
-      "label": { "en": "Size", "ko": "용량" },
+      "label": {
+        "en": "Size",
+        "ko": "용량"
+      },
       "values": [
-        { "en": "200g", "ko": "200g", "add": 0 },
-        { "en": "400g", "ko": "400g", "add": 30000 }
+        {
+          "en": "200g",
+          "ko": "200g",
+          "add": 0
+        },
+        {
+          "en": "400g",
+          "ko": "400g",
+          "add": 30000
+        }
       ]
     },
-    "scent": {
-      "label": { "en": "Scent", "ko": "향" },
+    "color": {
+      "label": {
+        "en": "Color",
+        "ko": "색상"
+      },
       "values": [
-        { "en": "Black Amber", "ko": "블랙 앰버", "add": 0 },
-        { "en": "Queen's Blood", "ko": "퀸즈 블러드", "add": 0 }
-      ]
-    },
-    "seal": {
-      "label": { "en": "Seal", "ko": "씰" },
-      "values": [
-        { "en": "Raven", "ko": "레이븐", "add": 0 },
-        { "en": "Pumpkin", "ko": "펌킨", "add": 0 },
-        { "en": "Initial I", "ko": "이니셜 I", "add": 0 }
+        {
+          "en": "Black",
+          "ko": "검정",
+          "add": 0
+        },
+        {
+          "en": "Deep Red",
+          "ko": "딥 레드",
+          "add": 0
+        }
       ]
     }
   },
@@ -31,7 +45,6 @@
     "nav.scent": "Scent",
     "nav.event": "Event",
     "nav.cart": "Cart",
-
     "basic.tag": "Scent for the quiet moments",
     "basic.enter": "Enter the night",
     "basic.date": "Halloween, Oct 31",
@@ -46,7 +59,6 @@
     "cat.3": "Fragrance",
     "cat.4": "Accessories",
     "basic.nightLine": "When the sun goes down,<br>another Isabelline opens.",
-
     "night.knock": "Knock to enter",
     "night.take": "Take the flame",
     "night.title": "Trick or Candle",
@@ -58,15 +70,14 @@
     "night.lit": "lit",
     "night.limited": "Limited candle",
     "night.guideExplore": "Bring the flame close.",
-    "night.hintExplore": "Bring the flame close. Scroll again to move on.",
+    "night.hintExplore": "Bring the flame close. Scroll once more to move on.",
     "night.fade1": "The flame is gone.",
     "night.fade2": "The scent remains.",
-    "night.scent": "Scent",
-    "night.scentSub": "Without a flame.",
+    "night.scent": "Smoke & Scent",
+    "night.scentSub": "After the flame, the smoke stays.",
     "night.eventLabel": "Halloween only",
     "night.eventTitle": "Seal your letters.",
     "night.eventBuy": "View the set",
-
     "p.back": "Back to the night",
     "p.limited": "Halloween limited",
     "p.qty": "Quantity",
@@ -82,7 +93,6 @@
     "p.contents": "Contents",
     "p.related": "You may also like",
     "p.notFound": "This product is not in the night collection.",
-
     "step.1": "Cart",
     "step.2": "Checkout",
     "step.3": "Complete",
@@ -97,7 +107,6 @@
     "c.freeNote": "Free shipping over ₩50,000",
     "c.total": "Total",
     "c.checkout": "Checkout",
-
     "co.title": "Checkout",
     "co.shipping": "Shipping",
     "co.name": "Name",
@@ -112,13 +121,11 @@
     "co.place": "Place order",
     "co.required": "Please fill in this field.",
     "co.yourOrder": "Your order",
-
     "done.title": "Thank you.",
     "done.placed": "Your order has been placed.",
     "done.no": "Order no.",
     "done.line": "Light it slowly. Let the scent stay.",
     "done.continue": "Continue shopping",
-
     "f.tag": "Scent for the quiet moments",
     "f.instagram": "Instagram",
     "f.contact": "Contact",
@@ -126,7 +133,8 @@
     "f.returns": "Returns",
     "f.terms": "Terms",
     "f.privacy": "Privacy",
-    "f.note": "2026 ISABELLINE. A portfolio project, not a real store."
+    "f.note": "2026 ISABELLINE. A portfolio project, not a real store.",
+    "p.soon": "Image coming soon"
   },
   "ko": {
     "nav.about": "브랜드 이야기",
@@ -136,7 +144,6 @@
     "nav.scent": "향",
     "nav.event": "이벤트",
     "nav.cart": "장바구니",
-
     "basic.tag": "고요한 순간을 위한 향",
     "basic.enter": "밤으로 들어가기",
     "basic.date": "할로윈, 10.31",
@@ -151,7 +158,6 @@
     "cat.3": "프레그런스",
     "cat.4": "액세서리",
     "basic.nightLine": "해가 지면,<br>또 다른 이저벨린이 열립니다.",
-
     "night.knock": "문을 두드려 주세요",
     "night.take": "촛불을 클릭해 주세요",
     "night.title": "Trick or Candle",
@@ -163,15 +169,14 @@
     "night.lit": "밝힘",
     "night.limited": "한정 캔들",
     "night.guideExplore": "불꽃을 가까이 가져가 보세요.",
-    "night.hintExplore": "불꽃을 가까이 가져가 보세요. 다시 스크롤하면 넘어갑니다.",
+    "night.hintExplore": "불꽃을 가까이 가져가 보세요. 한 번 더 스크롤하면 넘어갑니다.",
     "night.fade1": "불꽃은 꺼져도,",
     "night.fade2": "향은 남습니다.",
-    "night.scent": "향",
-    "night.scentSub": "불꽃 없이 머무는 향.",
+    "night.scent": "연기와 향",
+    "night.scentSub": "불꽃이 꺼진 뒤에도, 연기는 머뭅니다.",
     "night.eventLabel": "할로윈 한정",
     "night.eventTitle": "편지에 밤을 봉인하세요.",
     "night.eventBuy": "세트 보기",
-
     "p.back": "밤으로 돌아가기",
     "p.limited": "할로윈 한정",
     "p.qty": "수량",
@@ -187,7 +192,6 @@
     "p.contents": "구성",
     "p.related": "함께 어울리는 향",
     "p.notFound": "밤의 컬렉션에 없는 상품입니다.",
-
     "step.1": "장바구니",
     "step.2": "주문서 작성",
     "step.3": "주문 완료",
@@ -202,7 +206,6 @@
     "c.freeNote": "₩50,000 이상 무료 배송",
     "c.total": "총 결제 금액",
     "c.checkout": "주문하기",
-
     "co.title": "주문서 작성",
     "co.shipping": "배송 정보",
     "co.name": "이름",
@@ -217,13 +220,11 @@
     "co.place": "결제하기",
     "co.required": "필수 입력 항목입니다.",
     "co.yourOrder": "주문 상품",
-
     "done.title": "감사합니다.",
     "done.placed": "주문이 완료되었습니다.",
     "done.no": "주문번호",
     "done.line": "천천히 불을 밝히고, 향이 머물게 하세요.",
     "done.continue": "쇼핑 계속하기",
-
     "f.tag": "고요한 순간을 위한 향",
     "f.instagram": "인스타그램",
     "f.contact": "문의",
@@ -231,6 +232,7 @@
     "f.returns": "교환 반품",
     "f.terms": "이용약관",
     "f.privacy": "개인정보처리방침",
-    "f.note": "2026 ISABELLINE. 포트폴리오용 가상 브랜드입니다."
+    "f.note": "2026 ISABELLINE. 포트폴리오용 가상 브랜드입니다.",
+    "p.soon": "이미지 준비 중"
   }
 }

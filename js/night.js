@@ -18,7 +18,9 @@
     explore: $("#explore"),
     introVideo: $("#introVideo"),
     loopVideo: $("#loopVideo"),
-    cue: $("#introCue"),
+    frame: $("#introFrame"),
+    knock: $("#introKnock"),
+    flicker: $("#heroFlicker"),
     art: $("#heroArt"),
     heroOn: $("#heroOn"),
     spots: Array.from(document.querySelectorAll(".spot")),
@@ -34,7 +36,6 @@
     smoke: $("#smoke"),
     scrollArea: $("#scrollArea"),
     scentList: $("#scentList"),
-    eventPrice: $("#eventPrice"),
     bars: Array.from(document.querySelectorAll(".scrollcue i"))
   };
 
@@ -74,6 +75,7 @@
   }
 
   function setScene(name) {
+    el.intro.classList.remove("is-active");
     glowTarget = 1;
     mode = "scenes";
     scene = name;
@@ -129,31 +131,50 @@
     el.intro.classList.add("is-active");
     el.hero.classList.add("is-active");
     showHud(null);
+    setTimeout(() => el.intro.classList.add("is-ready"), 150);
+    setTimeout(() => el.intro.classList.add("is-clickable"), 1700);
   }
 
   function toLoop() {
     el.loopVideo.play().catch(() => {});
     el.intro.classList.add("is-loop");
     el.intro.classList.remove("is-playing");
-    el.cue.dataset.i18n = "night.take";
-    el.cue.innerHTML = ISB.t("night.take");
   }
 
   function takeFromVideo(e) {
     state.entered = true;
     save();
-    dark = 1;
-    setScene("hero");
+    const r = el.frame.getBoundingClientRect();
+    const sc = Math.max(innerWidth / r.width, innerHeight / r.height) * 1.02;
+    el.frame.style.setProperty("--s", sc.toFixed(3));
+    el.frame.classList.add("is-open");
     hold(e.clientX, e.clientY);
-    setTimeout(() => el.loopVideo.pause(), 1000);
+    mode = "opening";
+    setTimeout(() => {
+      dark = 1;
+      setScene("hero");
+    }, 650);
+    setTimeout(() => el.loopVideo.pause(), 1700);
   }
+
+  function knock() {
+    if (mode !== "intro" || !el.intro.classList.contains("is-clickable")) return;
+    if (el.intro.classList.contains("is-playing") || el.intro.classList.contains("is-loop")) return;
+    el.intro.classList.add("is-playing");
+    el.introVideo.play().catch(toLoop);
+  }
+
+  el.knock.addEventListener("click", (e) => {
+    e.stopPropagation();
+    knock();
+  });
 
   el.intro.addEventListener("click", (e) => {
     if (mode !== "intro") return;
     if (el.intro.classList.contains("is-loop")) return takeFromVideo(e);
-    if (el.intro.classList.contains("is-playing")) return;
-    el.intro.classList.add("is-playing");
-    el.introVideo.play().catch(toLoop);
+    const r = el.frame.getBoundingClientRect();
+    const inDoor = e.clientX > r.left + r.width * 0.33 && e.clientX < r.right - r.width * 0.33 && e.clientY > r.top + r.height * 0.1;
+    if (inDoor) knock();
   });
   el.introVideo.addEventListener("ended", toLoop);
 
@@ -167,7 +188,7 @@
       .catch(() => {});
   }
 
-  /* Scroll ticks: the screen stays still, three scrolls move to the next scene */
+  /* Scroll ticks: the screen stays still, two scrolls move to the next scene */
   const ticks = {
     count: 0,
     dir: 0,
@@ -197,7 +218,7 @@
       renderBars();
       clearTimeout(this.idle);
       this.idle = setTimeout(() => this.reset(), 1600);
-      if (this.count >= 3) {
+      if (this.count >= 2) {
         this.count = 0;
         this.last = now + 700;
         renderBars();
@@ -527,16 +548,15 @@
       el.smoke.style.top = cy - 24 + "px";
       el.fade.classList.add("is-on", "is-smoke");
     }, 800);
-    setTimeout(() => el.fade.classList.add("is-text"), 950);
-    setTimeout(() => toScroll(), 1700);
-    setTimeout(() => el.fade.classList.add("is-leaving"), 2300);
+    setTimeout(() => toScroll(), 1900);
+    setTimeout(() => el.fade.classList.add("is-leaving"), 2100);
     setTimeout(() => {
       el.fade.className = "fade";
       el.flame.classList.remove("is-out");
       flameOut = false;
       forceTarget = null;
       locked = false;
-    }, 2900);
+    }, 2800);
   }
 
   function toScroll() {
@@ -562,6 +582,18 @@
   }
 
   /* Rendering from JSON */
+  const HERO_FLAMES = [[48.55, 57.27, 3.2], [88.62, 48.73, 2.21], [14.94, 23.36, 2.09], [17.33, 29.29, 2.07], [28.36, 54.65, 2.02], [11.42, 31.07, 2.02], [50.77, 73.65, 1.9], [51.92, 63.84, 1.81], [65.91, 67.59, 1.81], [46.43, 73.72, 1.81], [69.43, 49.27, 1.8], [39.5, 53.62, 1.79], [5.81, 42.08, 1.76], [90.41, 12.97, 1.72], [91.21, 47.32, 1.65], [48.76, 73.85, 1.65], [77.14, 30.55, 1.63], [87.16, 32.05, 1.62], [57.83, 42.63, 1.62], [37.85, 55.7, 1.6], [36.52, 52.56, 1.58], [91.04, 52.62, 1.54], [91.7, 16.55, 1.51], [51.92, 70.53, 1.5], [15.48, 29.26, 1.48], [88.97, 50.92, 1.48]];
+
+  function flick(x, y, r) {
+    const d = (0.55 + Math.random() * 0.6).toFixed(2);
+    const delay = (-Math.random() * 2).toFixed(2);
+    return '<span class="flick" style="left:' + x + "%;top:" + y + "%;--d:" + d + "s;--delay:" + delay + "s" + (r ? ";--r:" + r * 2.2 + "%" : "") + '"></span>';
+  }
+
+  function renderHeroFlicker() {
+    el.flicker.innerHTML = HERO_FLAMES.map((f) => flick(f[0], f[1], f[2])).join("");
+  }
+
   function renderExplore() {
     const list = ISB.products.filter((p) => p.group === "limited");
     el.grid.innerHTML = list
@@ -569,7 +601,8 @@
         (p) =>
           '<a class="ecard" data-id="' + p.id + '" href="product.html?id=' + p.id + '">' +
           '<div class="ecard__img"><img class="off" src="' + ISB.img(p.images.off) + '" alt="' + ISB.l(p.name) + '">' +
-          '<img class="on" src="' + ISB.img(p.images.on) + '" alt="" loading="lazy"></div>' +
+          '<img class="on" src="' + ISB.img(p.images.on) + '" alt="" loading="lazy">' +
+          (p.flame ? flick(p.flame[0], p.flame[1]) : "") + "</div>" +
           '<div class="caption"><span class="caption__no">' + p.no + '</span><span class="caption__name">' + ISB.l(p.name) +
           '</span><span class="caption__price">' + ISB.won(p.price) + "</span></div></a>"
       )
@@ -584,14 +617,14 @@
       .map(
         (p) =>
           '<a class="scard" href="product.html?id=' + p.id + '">' +
-          '<div class="scard__img"><img src="' + ISB.img(p.images.main) + '" alt="' + ISB.l(p.name) + '" loading="lazy"></div>' +
+          (p.images.main
+            ? '<div class="scard__img"><img src="' + ISB.img(p.images.main) + '" alt="' + ISB.l(p.name) + '" loading="lazy"></div>'
+            : '<div class="scard__img is-empty">' + ISB.t("p.soon") + "</div>") +
           '<div class="caption"><span class="caption__no">' + p.no + '</span><span class="caption__name">' + ISB.l(p.name) +
           '</span><span class="caption__price">' + ISB.won(p.price) + "</span></div>" +
           '<p class="scard__line">' + ISB.l(p.line) + "</p></a>"
       )
       .join("");
-    const ev = ISB.product("E01");
-    if (ev) el.eventPrice.textContent = ISB.l(ev.name) + ", " + ISB.won(ev.price);
   }
 
   /* Nav links inside the night page */
@@ -646,6 +679,7 @@
 
   ISB.onReady(() => {
     resize();
+    renderHeroFlicker();
     renderExplore();
     renderScent();
     renderHeroState();

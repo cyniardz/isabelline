@@ -2,6 +2,7 @@
   ISB.resetNight();
 
   const art = document.getElementById("heroArt");
+  const logo = document.querySelector(".hero__logo");
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const target = { x: 0, y: 0 };
   const cur = { x: 0, y: 0 };
@@ -16,6 +17,8 @@
     cur.y += (target.y - cur.y) * 0.05;
     if (window.scrollY < innerHeight) {
       art.style.transform = "translate(" + cur.x.toFixed(2) + "px," + cur.y.toFixed(2) + "px) scale(1.02)";
+      logo.style.setProperty("--sx", (3 - cur.x * 0.18).toFixed(2));
+      logo.style.setProperty("--sy", (4 - cur.y * 0.25).toFixed(2));
     }
     requestAnimationFrame(loop);
   }

@@ -56,5 +56,6 @@ Figma, ChatGPT, Gemini, Flow, VS Code, Vercel
 - [x] Wireframe
 - [x] Layout
 - [x] Development v1
-- [ ] Design review and fixes
+- [x] Design review round 1
+- [ ] Product images for Smoke & Scent
 - [ ] Deploy

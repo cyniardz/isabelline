@@ -9,13 +9,19 @@
     [1, 2, 3].map((i) => '<li' + (i === n ? ' aria-current="step"' : "") + "><b>" + i + "</b>" + t("step." + i) + "</li>").join("") +
     "</ol>";
 
+  function thumb(p, cls) {
+    const f = p.images.on || p.images.main;
+    return f
+      ? '<div class="' + cls + '"><img src="' + ISB.img(f) + '" alt="' + esc(ISB.l(p.name)) + '" loading="lazy"></div>'
+      : '<div class="' + cls + ' is-empty">' + t("p.soon") + "</div>";
+  }
+
   /* Product detail */
   const view = { opt: 0, qty: 1, image: 0 };
 
   function gallery(p) {
     const im = p.images;
-    if (im.main) return [im.main];
-    return [im.on, im.off, im.detail, im.life].filter(Boolean);
+    return [im.main, im.on, im.off, im.detail, im.life].filter(Boolean);
   }
 
   function renderProduct() {
@@ -32,7 +38,7 @@
     const specs = limited
       ? [[t("p.notes"), ISB.l(p.notes)], [t("p.burn"), t("p.burnValue")], [t("p.ingredients"), t("p.ingredientsValue")]]
       : [[p.group === "event" ? t("p.contents") : t("p.notes"), ISB.l(p.notes)]];
-    const backHash = p.group === "limited" ? "#explore" : p.group === "scent" ? "#scent" : "#event";
+    const backHash = p.group === "limited" ? "#explore" : "#scent";
     const related = ISB.products.filter((r) => r.group === p.group && r.id !== p.id).slice(0, 3);
 
     app.innerHTML =
@@ -40,7 +46,9 @@
       '<p class="crumb"><a class="back" href="index.html' + backHash + '"><span class="arrow">←</span> ' + t("p.back") + "</a></p>" +
       '<div class="grid pd">' +
       '<div class="pd__gallery">' +
-      '<div class="pd__main"><img id="mainImg" src="' + ISB.img(imgs[view.image] || imgs[0]) + '" alt="' + esc(ISB.l(p.name)) + '"></div>' +
+      (imgs.length
+        ? '<div class="pd__main"><img id="mainImg" src="' + ISB.img(imgs[view.image] || imgs[0]) + '" alt="' + esc(ISB.l(p.name)) + '"></div>'
+        : '<div class="pd__main is-empty">' + t("p.soon") + "</div>") +
       (imgs.length > 1
         ? '<div class="pd__thumbs">' +
           imgs.map((f, i) => '<button class="pd__thumb" type="button" data-i="' + i + '" aria-current="' + (i === view.image) + '"><img src="' + ISB.img(f) + '" alt=""></button>').join("") +
@@ -73,7 +81,7 @@
           related
             .map(
               (r) =>
-                '<a class="rcard" href="product.html?id=' + r.id + '"><div class="rcard__img"><img src="' + ISB.img(r.images.on || r.images.main) + '" alt="' + esc(ISB.l(r.name)) + '" loading="lazy"></div>' +
+                '<a class="rcard" href="product.html?id=' + r.id + '">' + thumb(r, "rcard__img") +
                 '<div class="caption"><span class="caption__no">' + r.no + '</span><span class="caption__name">' + ISB.l(r.name) + '</span><span class="caption__price">' + ISB.won(r.price) + "</span></div></a>"
             )
             .join("") +
@@ -157,7 +165,7 @@
           if (!p) return "";
           const opt = ISB.optionName(p, i.opt);
           return (
-            '<li class="line"><a class="line__img" href="product.html?id=' + p.id + '"><img src="' + ISB.img(p.images.on || p.images.main) + '" alt=""></a>' +
+            '<li class="line"><a class="line__img' + (p.images.on || p.images.main ? "" : " is-empty") + '" href="product.html?id=' + p.id + '">' + (p.images.on || p.images.main ? '<img src="' + ISB.img(p.images.on || p.images.main) + '" alt="">' : "") + "</a>" +
             '<div><a class="line__name tlink" href="product.html?id=' + p.id + '">' + ISB.l(p.name) + "</a>" +
             '<p class="line__opt">' + (opt || "&nbsp;") + "</p>" +
             '<div class="btn qty"><button type="button" data-n="' + n + '" data-q="-1" aria-label="-">−</button><output>' + i.qty + '</output><button type="button" data-n="' + n + '" data-q="1" aria-label="+">+</button></div></div>' +

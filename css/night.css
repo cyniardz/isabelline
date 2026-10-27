@@ -44,13 +44,24 @@ body.is-scroll .scene {
   display: none;
 }
 
-/* Intro */
+/* Intro: the film plays in a framed window, then opens to full screen */
 .scene--intro {
   z-index: 30;
-  cursor: pointer;
 }
 
-.scene--intro video {
+.intro__frame {
+  --s: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(60vw, calc((100vh - 200px) * 16 / 9));
+  aspect-ratio: 16 / 9;
+  transform: translate(-50%, -50%) scale(var(--s));
+  transition: transform 0.9s var(--ease-soft);
+  will-change: transform;
+}
+
+.intro__frame video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -68,23 +79,125 @@ body.is-scroll .scene {
   opacity: 1;
 }
 
-.intro__cue {
+.scene--intro.is-loop {
+  cursor: pointer;
+}
+
+.intro__marks {
+  --mark: 18px;
+  position: absolute;
+  inset: -14px;
+  pointer-events: none;
+  color: rgba(169, 109, 59, 0.7);
+  background-image:
+    linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor);
+  background-position: left top, left top, right top, right top, left bottom, left bottom, right bottom, right bottom;
+  background-size:
+    var(--mark) 1px, 1px var(--mark), var(--mark) 1px, 1px var(--mark),
+    var(--mark) 1px, 1px var(--mark), var(--mark) 1px, 1px var(--mark);
+  background-repeat: no-repeat;
+  transition: opacity 0.4s;
+}
+
+.intro__frame.is-open .intro__marks {
+  opacity: 0;
+}
+
+.intro__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 34% 42% at 50% 55%, rgba(11, 10, 10, 0) 0%, rgba(11, 10, 10, 0) 35%, rgba(11, 10, 10, 0.5) 75%, rgba(11, 10, 10, 0.78) 100%);
+  opacity: 0;
+  transition: opacity 1s var(--ease-soft);
+}
+
+.scene--intro.is-ready .intro__vignette {
+  opacity: 1;
+}
+
+.scene--intro.is-playing .intro__vignette,
+.scene--intro.is-loop .intro__vignette {
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+
+.intro__knock {
   position: absolute;
   left: 50%;
-  bottom: 9vh;
-  transform: translateX(-50%);
+  top: 57%;
+  transform: translate(-50%, -50%);
+  padding: 18px 28px;
+  font-family: var(--font-title);
+  font-weight: 300;
+  font-size: clamp(18px, 1.6vw, 26px);
+  letter-spacing: 0.22em;
+  color: var(--ivory);
+  text-shadow: 0 0 18px rgba(252, 212, 152, 0.55), 0 0 2px rgba(252, 212, 152, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.1s var(--ease-soft) 0.6s, text-shadow 0.4s;
+  cursor: pointer;
+}
+
+.scene--intro.is-ready .intro__knock {
+  opacity: 1;
+}
+
+.scene--intro.is-clickable .intro__knock {
+  pointer-events: auto;
+  animation: glow 3s ease-in-out infinite;
+}
+
+.intro__knock:hover,
+.intro__knock:focus-visible {
+  text-shadow: 0 0 26px rgba(252, 212, 152, 0.9), 0 0 4px rgba(252, 212, 152, 0.9);
+}
+
+.scene--intro.is-playing .intro__knock,
+.scene--intro.is-loop .intro__knock {
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+  transition: opacity 0.3s;
+}
+
+.intro__take {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 7%;
+  text-align: center;
   font-size: var(--size-label);
   letter-spacing: 0.3em;
-  text-transform: uppercase;
   color: var(--ivory);
-  padding: 12px 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s;
+}
+
+.scene--intro.is-loop .intro__take {
+  opacity: 1;
   animation: breathe 2.8s ease-in-out infinite;
 }
 
-.scene--intro.is-playing .intro__cue {
+.intro__frame.is-open .intro__take {
   opacity: 0;
   animation: none;
-  transition: opacity 0.4s;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 760px) {
+  .intro__frame {
+    width: 90vw;
+  }
 }
 
 @keyframes breathe {
@@ -496,7 +609,7 @@ body.is-holding .flame,
 }
 
 .fade.is-smoke .smoke {
-  animation: rise 1.6s var(--ease-soft) forwards;
+  animation: rise 1.9s var(--ease-soft) forwards;
 }
 
 .fade.is-smoke .smoke:nth-child(2) {
@@ -553,7 +666,7 @@ body.is-scroll .scroll-area.is-shown {
 .scent__list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--grid-gutter);
+  gap: var(--space-5) var(--grid-gutter);
 }
 
 .scard__img {
@@ -563,6 +676,16 @@ body.is-scroll .scroll-area.is-shown {
   mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
 }
 
+.scard__img.is-empty {
+  background: linear-gradient(160deg, rgba(243, 238, 227, 0.05), rgba(243, 238, 227, 0.015));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--size-label);
+  letter-spacing: 0.08em;
+  color: var(--ivory-30);
+}
+
 .scard__img img {
   width: 100%;
   height: 100%;
@@ -570,7 +693,17 @@ body.is-scroll .scroll-area.is-shown {
   transition: transform 1.6s var(--ease-slow);
 }
 
-.scard:hover .scard__img img {
+.scard:hover .scard__img.is-empty {
+  background: linear-gradient(160deg, rgba(243, 238, 227, 0.05), rgba(243, 238, 227, 0.015));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--size-label);
+  letter-spacing: 0.08em;
+  color: var(--ivory-30);
+}
+
+.scard__img img {
   transform: scale(1.03);
 }
 
@@ -589,58 +722,10 @@ body.is-scroll .scroll-area.is-shown {
   line-height: 1.6;
 }
 
-.event {
-  position: relative;
-  min-height: 620px;
-  display: flex;
-  align-items: center;
-  background: var(--black);
-  overflow: hidden;
-}
-
-.event__img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  -webkit-mask-image: linear-gradient(to right, #000 45%, transparent 85%);
-  mask-image: linear-gradient(to right, #000 45%, transparent 85%);
-}
-
-.event .container {
-  position: relative;
-}
-
-.event__text {
-  grid-column: 8 / span 5;
-}
-
-.event__label {
-  font-size: var(--size-small);
-  color: var(--bronze);
-  letter-spacing: 0.06em;
-}
-
-.event__title {
-  margin: 10px 0 14px;
-  font-size: var(--size-h2);
-}
-
-.event__price {
-  font-size: var(--size-small);
-  color: var(--ivory-60);
-  margin-bottom: var(--space-4);
-}
-
 @media (max-width: 1024px) {
   .scent__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: var(--space-5);
-  }
-
-  .event__text {
-    grid-column: 6 / span 7;
   }
 }
 
@@ -672,19 +757,6 @@ body.is-scroll .scroll-area.is-shown {
     font-size: 15px;
   }
 
-  .event__img {
-    -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 80%);
-    mask-image: linear-gradient(to bottom, #000 40%, transparent 80%);
-  }
-
-  .event {
-    align-items: flex-end;
-    padding-bottom: var(--space-5);
-  }
-
-  .event__text {
-    grid-column: 1 / -1;
-  }
 }
 
 /* Arrival from the day page */
@@ -718,4 +790,47 @@ body.is-scroll .scroll-area.is-shown {
   line-height: 1;
   display: block;
   color: var(--ivory);
+}
+
+/* Flames that stay lit flicker softly */
+.art__flicker {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--brighten) var(--ease-soft);
+  pointer-events: none;
+}
+
+.art.is-all .art__flicker {
+  opacity: 1;
+}
+
+.flick {
+  position: absolute;
+  width: var(--r);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 214, 150, 0.55) 0%, rgba(255, 170, 90, 0.22) 38%, rgba(255, 150, 70, 0) 70%);
+  mix-blend-mode: screen;
+  animation: flick var(--d) ease-in-out infinite alternate;
+  animation-delay: var(--delay);
+}
+
+.ecard .flick {
+  --r: 9%;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease-soft);
+}
+
+.ecard.is-lit .flick {
+  opacity: 1;
+}
+
+@keyframes flick {
+  0% { transform: translate(-50%, -50%) scale(0.92, 0.96); filter: brightness(0.85); }
+  23% { transform: translate(-50%, -52%) scale(1.04, 1.08); filter: brightness(1.1); }
+  48% { transform: translate(-51%, -50%) scale(0.97, 1); filter: brightness(0.95); }
+  71% { transform: translate(-49%, -51%) scale(1.06, 1.04); filter: brightness(1.15); }
+  100% { transform: translate(-50%, -50%) scale(0.95, 0.98); filter: brightness(0.9); }
 }

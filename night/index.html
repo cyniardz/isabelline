@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-root="../">
+<html lang="ko" data-root="../">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,8 @@
   <link rel="icon" href="../assets/favicon/favicon-black.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&family=Hahmlet:wght@200;300;400&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
   <link rel="preload" as="image" href="../assets/images/night/hero-off.webp">
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/base.css">
@@ -18,9 +19,14 @@
   <div class="arrive" id="arrive" aria-hidden="true"><span>ISABELLINE</span></div>
 
   <section class="scene scene--intro" id="intro" aria-label="Intro">
-    <video id="introVideo" src="../assets/video/halloween-intro.mp4" poster="../assets/images/night/intro-poster.webp" muted playsinline preload="auto"></video>
-    <video id="loopVideo" src="../assets/video/candle-idle-loop.mp4" poster="../assets/images/night/candle-poster.webp" muted playsinline loop preload="auto"></video>
-    <button class="intro__cue" id="introCue" type="button" data-i18n="night.knock"></button>
+    <div class="intro__frame" id="introFrame">
+      <video id="introVideo" src="../assets/video/halloween-intro.mp4" poster="../assets/images/night/intro-poster.webp" muted playsinline preload="auto"></video>
+      <video id="loopVideo" src="../assets/video/candle-idle-loop.mp4" poster="../assets/images/night/candle-poster.webp" muted playsinline loop preload="auto"></video>
+      <div class="intro__vignette" aria-hidden="true"></div>
+      <span class="intro__marks" aria-hidden="true"></span>
+      <button class="intro__knock" id="introKnock" type="button" data-i18n="night.knock"></button>
+      <p class="intro__take" data-i18n="night.take"></p>
+    </div>
   </section>
 
   <section class="scene scene--hero" id="hero" aria-label="Trick or Candle">
@@ -28,6 +34,7 @@
       <img class="art__off" src="../assets/images/night/hero-off.webp" alt="">
       <img class="art__on" id="heroOn" src="../assets/images/night/hero-on.webp" alt="">
       <img class="art__full" src="../assets/images/night/hero-on.webp" alt="">
+      <div class="art__flicker" id="heroFlicker" aria-hidden="true"></div>
       <button class="spot" type="button" data-i="0" style="left:15.03%;top:35.37%" aria-label="Candle 1"></button>
       <button class="spot" type="button" data-i="1" style="left:36.98%;top:52.52%" aria-label="Candle 2"></button>
       <button class="spot" type="button" data-i="2" style="left:66.75%;top:60.02%" aria-label="Candle 3"></button>
@@ -57,7 +64,7 @@
       <p class="hud__count"><b id="exploreCount">0</b> / 6 <span data-i18n="night.lit"></span></p>
     </div>
     <div class="hud__group scrollcue-wrap" data-hud="cue">
-      <div class="scrollcue" aria-hidden="true"><span data-i18n="night.scroll"></span><i></i><i></i><i></i></div>
+      <div class="scrollcue" aria-hidden="true"><span data-i18n="night.scroll"></span><i></i><i></i></div>
     </div>
   </div>
 
@@ -74,7 +81,6 @@
     <div class="smoke-wrap" id="smoke" style="position:absolute;left:50%;top:50%">
       <span class="smoke"></span><span class="smoke"></span><span class="smoke"></span>
     </div>
-    <p class="fade__lines"><span data-i18n="night.fade1"></span><br><span data-i18n="night.fade2"></span></p>
   </div>
 
   <div class="scroll-area" id="scrollArea">
@@ -88,17 +94,6 @@
       </div>
     </section>
 
-    <section class="event" id="event">
-      <img class="event__img" src="../assets/images/products/event-wax-seal.webp" alt="" loading="lazy">
-      <div class="container grid">
-        <div class="event__text">
-          <p class="event__label" data-i18n="night.eventLabel"></p>
-          <h2 class="serif event__title" data-i18n="night.eventTitle"></h2>
-          <p class="event__price" id="eventPrice"></p>
-          <a class="btn" href="product.html?id=E01"><span data-i18n="night.eventBuy"></span><span class="arrow">→</span></a>
-        </div>
-      </div>
-    </section>
     <div data-footer></div>
   </div>
 

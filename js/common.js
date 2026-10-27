@@ -23,7 +23,7 @@
 
   const ISB = {
     root,
-    lang: store.get("isb-lang", "en"),
+    lang: store.get("isb-lang", "ko"),
     copy: null,
     products: [],
     readyFns: [],
@@ -45,7 +45,7 @@
       return this.products.find((p) => p.id === id);
     },
     img(file) {
-      return root + "assets/images/products/" + file;
+      return file ? root + "assets/images/products/" + file : "";
     },
     optionSet(p) {
       return p && p.options ? this.copy.optionSets[p.options] : null;
@@ -149,7 +149,7 @@
       const night = type === "night";
       const base = night ? root + "night/" : root;
       const menu = night
-        ? [["nav.limited", base + "index.html#explore"], ["nav.scent", base + "index.html#scent"], ["nav.event", base + "index.html#event"]]
+        ? [["nav.limited", base + "index.html#explore"], ["nav.scent", base + "index.html#scent"]]
         : [["nav.about", "#about"], ["nav.collection", "#collection"], ["nav.night", "#night"]];
       const header = document.createElement("header");
       header.className = "nav";
@@ -157,12 +157,13 @@
         '<div class="container grid">' +
         '<a class="nav__logo" href="' + base + 'index.html">ISABELLINE</a>' +
         '<nav class="nav__menu dimlist">' +
+        '<button class="lang" type="button" aria-label="Language"><span data-lang="ko">KR</span> / <span data-lang="en">EN</span></button>' +
         menu.map((m) => '<a href="' + m[1] + '" data-i18n="' + m[0] + '"></a>').join("") +
         "</nav>" +
         '<div class="nav__util dimlist">' +
-        '<button class="lang" type="button" aria-label="Language"><span data-lang="en">EN</span> / <span data-lang="ko">KR</span></button>' +
         (night ? '<a href="' + base + 'cart.html"><span data-i18n="nav.cart"></span> <span class="cart-count"></span></a>' : "") +
         "</div></div>";
+      if (!night) header.querySelector(".nav__util").remove();
       document.body.prepend(header);
       header.querySelector(".lang").addEventListener("click", () => {
         this.setLang(this.lang === "en" ? "ko" : "en");

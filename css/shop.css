@@ -28,6 +28,18 @@
   background: #050404;
 }
 
+.pd__main.is-empty,
+.rcard__img.is-empty,
+.line__img.is-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, rgba(243, 238, 227, 0.05), rgba(243, 238, 227, 0.015));
+  font-size: var(--size-label);
+  letter-spacing: 0.08em;
+  color: var(--ivory-30);
+}
+
 .pd__main img {
   width: 100%;
   height: 100%;

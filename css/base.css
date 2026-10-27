@@ -165,6 +165,10 @@ button {
   opacity: 1;
 }
 
+.nav__menu .lang {
+  margin-right: 4px;
+}
+
 .lang span {
   opacity: 0.4;
   transition: opacity 0.3s;
