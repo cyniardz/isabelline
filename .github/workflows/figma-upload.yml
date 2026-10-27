@@ -18,7 +18,7 @@ jobs:
           import json, os, urllib.request
           for f, u in json.loads(os.environ["JOBS"]):
               data = open(f, "rb").read()
-              req = urllib.request.Request(u, data=data, method="POST", headers={"Content-Type": "image/jpeg"})
+              req = urllib.request.Request(u, data=data, method="POST", headers={"Content-Type": "image/png" if f.endswith(".png") else "image/jpeg"})
               with urllib.request.urlopen(req) as r:
                   print(f, r.status)
           PY
