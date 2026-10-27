@@ -46,7 +46,6 @@
     <div class="hud__group" data-hud="hero">
       <h1 class="hud__title" data-i18n="night.title"></h1>
       <p class="hud__sub" data-i18n="night.sub"></p>
-      <p class="hud__count"><b id="heroCount">0</b> / 5 <span data-i18n="night.lit"></span></p>
       <p class="hud__guide" id="heroGuide" data-i18n="night.guideHero"></p>
       <a class="hud__return back" href="../index.html"><span class="arrow">←</span> <span data-i18n="night.return"></span></a>
     </div>
@@ -63,10 +62,10 @@
   </div>
 
   <div class="stand" id="stand">
-    <button type="button" class="stand__btn" id="standBtn" aria-label="Take the flame">
-      <div class="stand__candle"></div>
+    <button type="button" class="stand__btn" id="standBtn" data-i18n-aria="night.take">
+      <span class="stand__glow"></span>
+      <span class="flame__body"></span>
     </button>
-    <span class="stand__label" data-i18n="night.take"></span>
   </div>
 
   <div class="flame" id="flame" aria-hidden="true"><div class="flame__body"></div></div>

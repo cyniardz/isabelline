@@ -25,7 +25,6 @@
     grid: $("#exploreGrid"),
     guide: $("#exploreGuide"),
     heroGuide: $("#heroGuide"),
-    heroCount: $("#heroCount"),
     exploreCount: $("#exploreCount"),
     canvas: $("#dark"),
     flame: $("#flame"),
@@ -110,7 +109,7 @@
 
   function standPoint() {
     const r = el.standBtn.getBoundingClientRect();
-    return { x: r.left + r.width / 2, y: r.top + r.height * 0.32 };
+    return { x: r.left + r.width / 2, y: r.top + r.height * 0.4 };
   }
 
   function enterIfNeeded() {
@@ -123,6 +122,8 @@
 
   /* Intro: door, knock, candle */
   function startIntro() {
+    preloadVideo(el.introVideo);
+    preloadVideo(el.loopVideo);
     mode = "intro";
     body.classList.add("is-intro", "is-scenes");
     el.intro.classList.add("is-active");
@@ -155,6 +156,16 @@
     el.introVideo.play().catch(toLoop);
   });
   el.introVideo.addEventListener("ended", toLoop);
+
+  function preloadVideo(video) {
+    const src = video.getAttribute("src");
+    fetch(src)
+      .then((r) => r.blob())
+      .then((b) => {
+        if (!video.currentTime) video.src = URL.createObjectURL(b);
+      })
+      .catch(() => {});
+  }
 
   /* Scroll ticks: the screen stays still, three scrolls move to the next scene */
   const ticks = {
@@ -312,14 +323,25 @@
     updateTargets();
   }
 
+  let spreading = false;
+  function lightAllFrom(start) {
+    if (spreading || state.hero.length >= 5) return;
+    spreading = true;
+    const from = spotPoint(start);
+    const order = el.spots
+      .map((s, i) => ({ i, d: Math.hypot(spotPoint(i).x - from.x, spotPoint(i).y - from.y) }))
+      .sort((a, b) => a.d - b.d);
+    order.forEach((o, n) => setTimeout(() => lightHero(o.i), n * 110));
+    setTimeout(() => (spreading = false), order.length * 110 + 50);
+  }
+
   el.spots.forEach((s) =>
     s.addEventListener("click", () => {
-      lightHero(Number(s.dataset.i));
+      lightAllFrom(Number(s.dataset.i));
     })
   );
 
   function renderHeroState() {
-    el.heroCount.textContent = state.hero.length;
     const all = state.hero.length >= 5;
     el.art.classList.toggle("is-all", all);
     el.heroGuide.dataset.i18n = all ? "night.guideDone" : "night.guideHero";
@@ -356,7 +378,7 @@
       el.spots.forEach((s, i) => {
         if (state.hero.includes(i)) return;
         const p = spotPoint(i);
-        if (Math.hypot(fx - p.x, fy - p.y) < 56) lightHero(i);
+        if (Math.hypot(fx - p.x, fy - p.y) < 56) lightAllFrom(i);
       });
     } else if (scene === "explore") {
       cards.forEach((c) => {

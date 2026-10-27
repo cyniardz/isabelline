@@ -2,6 +2,15 @@ body.night {
   overflow-x: hidden;
 }
 
+body.is-intro .nav {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.night .nav {
+  transition: opacity 0.9s var(--ease-soft);
+}
+
 body.is-scenes {
   overflow: hidden;
   height: 100vh;
@@ -190,10 +199,7 @@ body.is-scroll .scene {
   margin-top: 12px;
 }
 
-.ecard:hover .caption__name,
-.ecard:focus-visible .caption__name {
-  font-style: italic;
-}
+
 
 /* Darkness */
 #dark {
@@ -331,43 +337,46 @@ body.is-intro .hud {
   background: var(--ivory);
 }
 
-/* Candle stand for picking the flame up again */
+/* The flame waits at the bottom left when you come back */
 .stand {
   position: fixed;
-  left: 50%;
-  top: 54%;
+  left: calc(var(--grid-margin) + 8px);
+  bottom: calc(3.5vh + 48px);
   z-index: 45;
-  transform: translate(-50%, -50%);
   display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  color: var(--ivory);
 }
 
 body.is-standing .stand {
-  display: flex;
+  display: block;
 }
 
-body.is-standing.in-explore .stand {
-  top: calc(var(--nav-height) + 96px);
-  transform: translate(-50%, 0) scale(0.72);
-  transform-origin: 50% 0;
+.stand__btn {
+  position: relative;
+  display: block;
+  width: 56px;
+  height: 72px;
 }
 
-.stand__candle {
+.stand__btn .flame__body {
+  left: 19px;
+  top: 18px;
+}
+
+.stand__glow {
+  position: absolute;
+  left: 50%;
+  top: 45%;
   width: 120px;
-  height: 160px;
-  background: url("../assets/images/night/candle-on.webp") 50% 38% / 520px auto no-repeat;
-  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 55%, transparent 100%);
-  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 55%, transparent 100%);
+  height: 120px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(252, 212, 152, 0.28), rgba(252, 212, 152, 0) 70%);
+  animation: breathe 2.8s ease-in-out infinite;
 }
 
-.stand__label {
-  font-size: var(--size-label);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  animation: breathe 2.8s ease-in-out infinite;
+.stand__btn:hover .stand__glow,
+.stand__btn:focus-visible .stand__glow {
+  animation-duration: 1.2s;
 }
 
 /* Flame cursor */

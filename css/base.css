@@ -112,11 +112,12 @@ button {
 
 .nav .container {
   height: 100%;
+  max-width: none;
+  display: flex;
   align-items: center;
 }
 
 .nav__logo {
-  grid-column: 1 / span 4;
   font-family: "Cormorant Garamond", serif;
   font-size: 22px;
   font-weight: 400;
@@ -125,16 +126,17 @@ button {
 }
 
 .nav__menu {
-  grid-column: 5 / span 5;
+  margin-left: auto;
   display: flex;
-  gap: 48px;
+  gap: 44px;
 }
 
 .nav__util {
-  grid-column: 10 / span 3;
   display: flex;
-  justify-content: flex-end;
   gap: 32px;
+  margin-left: 72px;
+  padding-left: 32px;
+  border-left: 1px solid var(--line);
 }
 
 .nav a,
@@ -388,11 +390,14 @@ button:hover .arrow {
   .nav__menu {
     gap: 28px;
   }
+
+  .nav__util {
+    margin-left: 40px;
+  }
 }
 
 @media (max-width: 760px) {
   .nav__logo {
-    grid-column: 1 / span 6;
     font-size: 18px;
   }
 
@@ -401,7 +406,9 @@ button:hover .arrow {
   }
 
   .nav__util {
-    grid-column: 7 / span 6;
+    margin-left: auto;
+    padding-left: 0;
+    border-left: 0;
     gap: 20px;
   }
 
