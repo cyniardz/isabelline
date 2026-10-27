@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" data-root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ISABELLINE</title>
+  <meta name="description" content="ISABELLINE, hand-poured candles for the quiet moments.">
+  <link rel="icon" href="assets/favicon/favicon-ivory.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/basic.css">
+</head>
+<body class="basic">
+
+  <section class="hero" id="top">
+    <div class="hero__art" id="heroArt">
+      <img src="assets/images/basic/hero.webp" alt="The ISABELLINE atelier with candles on a wooden table">
+      <img class="hero__curtain" src="assets/images/basic/hero.webp" alt="" aria-hidden="true">
+      <div class="hero__shade"></div>
+    </div>
+    <div class="hero__veil"></div>
+    <div class="hero__brand">
+      <h1 class="hero__logo">ISABELLINE</h1>
+      <p class="hero__tag" data-i18n="basic.tag"></p>
+    </div>
+    <div class="enter">
+      <a class="enter__link" href="night/index.html" data-enter><span data-i18n="basic.enter"></span><span class="arrow">→</span></a>
+      <p class="enter__date" data-i18n="basic.date"></p>
+    </div>
+    <p class="hero__scroll" data-i18n="basic.scroll"></p>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container grid">
+      <div class="about__img"><img src="assets/images/basic/about.webp" alt="Candles and reed diffusers in soft morning light" loading="lazy"></div>
+      <div class="about__text reveal">
+        <h2 class="serif about__title" data-i18n="basic.aboutTitle"></h2>
+        <p class="about__body" data-i18n="basic.aboutBody"></p>
+        <p class="about__keys" data-i18n="basic.aboutKeys"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="collection" id="collection">
+    <div class="container">
+      <div class="collection__head">
+        <h2 class="serif" data-i18n="basic.collection"></h2>
+        <p data-i18n="basic.collectionNote"></p>
+      </div>
+      <ul class="collection__list">
+        <li class="tile"><div class="tile__img"><img src="assets/images/basic/category-scented-candle.webp" alt="" loading="lazy"></div><p class="tile__name" data-i18n="cat.1"></p></li>
+        <li class="tile"><div class="tile__img"><img src="assets/images/basic/category-candle.webp" alt="" loading="lazy"></div><p class="tile__name" data-i18n="cat.2"></p></li>
+        <li class="tile"><div class="tile__img"><img src="assets/images/basic/category-fragrance.webp" alt="" loading="lazy"></div><p class="tile__name" data-i18n="cat.3"></p></li>
+        <li class="tile"><div class="tile__img"><img src="assets/images/basic/category-accessories.webp" alt="" loading="lazy"></div><p class="tile__name" data-i18n="cat.4"></p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="teaser" id="night">
+    <img src="assets/images/basic/night.webp" alt="" loading="lazy">
+    <div class="teaser__inner">
+      <p class="serif teaser__line" data-i18n="basic.nightLine"></p>
+      <a class="btn" href="night/index.html" data-enter><span data-i18n="basic.enter"></span><span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <div class="nightfall" id="nightfall" aria-hidden="true"><span>ISABELLINE</span></div>
+
+  <script src="js/common.js"></script>
+  <script src="js/basic.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+:root {
+  --ivory: #F3EEE3;
+  --black: #0B0A0A;
+  --dark-brown: #1D0F06;
+  --bronze: #A96D3B;
+  --deep-red: #5C120F;
+  --flame: #FCD498;
+
+  --ivory-60: rgba(243, 238, 227, 0.6);
+  --ivory-30: rgba(243, 238, 227, 0.3);
+  --ivory-15: rgba(243, 238, 227, 0.15);
+  --black-60: rgba(11, 10, 10, 0.6);
+  --black-15: rgba(11, 10, 10, 0.15);
+
+  --font-title: "Cormorant Garamond", "Noto Serif KR", serif;
+  --font-body: "Inter", "Noto Sans KR", sans-serif;
+  --font-title-kr: "Noto Serif KR", "Cormorant Garamond", serif;
+  --font-body-kr: "Noto Sans KR", "Inter", sans-serif;
+
+  --size-display: clamp(48px, 5.8vw, 84px);
+  --size-h1: clamp(40px, 4.4vw, 64px);
+  --size-h2: clamp(30px, 2.8vw, 40px);
+  --size-h3: 22px;
+  --size-body: 15px;
+  --size-small: 13px;
+  --size-label: 11px;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 64px;
+  --space-6: 96px;
+  --space-7: 160px;
+
+  --grid-max: 1440px;
+  --grid-margin: 80px;
+  --grid-gutter: 24px;
+  --nav-height: 88px;
+
+  --flame-radius: 220px;
+  --glow-radius: 170px;
+  --dark-start: 0.9;
+  --dark-lit: 0.55;
+  --fade-out: 2s;
+  --brighten: 1.2s;
+
+  --ease-slow: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-soft: cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --grid-margin: 40px;
+    --grid-gutter: 16px;
+    --nav-height: 72px;
+    --flame-radius: 180px;
+    --glow-radius: 140px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --grid-margin: 20px;
+    --nav-height: 64px;
+    --flame-radius: 150px;
+    --glow-radius: 110px;
+  }
+}

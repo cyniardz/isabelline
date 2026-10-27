@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ISABELLINE | The Night</title>
+  <meta name="description" content="Halloween limited candles by ISABELLINE. Take the flame and light the night.">
+  <link rel="icon" href="../assets/favicon/favicon-black.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="../assets/images/night/hero-off.webp">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/night.css">
+</head>
+<body class="night is-scenes is-intro">
+  <div class="arrive" id="arrive" aria-hidden="true"><span>ISABELLINE</span></div>
+
+  <section class="scene scene--intro" id="intro" aria-label="Intro">
+    <video id="introVideo" src="../assets/video/halloween-intro.mp4" poster="../assets/images/night/intro-poster.webp" muted playsinline preload="auto"></video>
+    <video id="loopVideo" src="../assets/video/candle-idle-loop.mp4" poster="../assets/images/night/candle-poster.webp" muted playsinline loop preload="auto"></video>
+    <button class="intro__cue" id="introCue" type="button" data-i18n="night.knock"></button>
+  </section>
+
+  <section class="scene scene--hero" id="hero" aria-label="Trick or Candle">
+    <div class="art" id="heroArt">
+      <img class="art__off" src="../assets/images/night/hero-off.webp" alt="">
+      <img class="art__on" id="heroOn" src="../assets/images/night/hero-on.webp" alt="">
+      <img class="art__full" src="../assets/images/night/hero-on.webp" alt="">
+      <button class="spot" type="button" data-i="0" style="left:15.03%;top:35.37%" aria-label="Candle 1"></button>
+      <button class="spot" type="button" data-i="1" style="left:36.98%;top:52.52%" aria-label="Candle 2"></button>
+      <button class="spot" type="button" data-i="2" style="left:66.75%;top:60.02%" aria-label="Candle 3"></button>
+      <button class="spot" type="button" data-i="3" style="left:90.50%;top:18.22%" aria-label="Candle 4"></button>
+      <button class="spot" type="button" data-i="4" style="left:88.99%;top:55.73%" aria-label="Candle 5"></button>
+    </div>
+  </section>
+
+  <section class="scene scene--explore" id="explore" aria-labelledby="exploreTitle">
+    <div class="explore__grid" id="exploreGrid"></div>
+  </section>
+
+  <canvas id="dark" aria-hidden="true"></canvas>
+
+  <div class="hud">
+    <div class="hud__group" data-hud="hero">
+      <h1 class="hud__title" data-i18n="night.title"></h1>
+      <p class="hud__sub" data-i18n="night.sub"></p>
+      <p class="hud__count"><b id="heroCount">0</b> / 5 <span data-i18n="night.lit"></span></p>
+      <p class="hud__guide" id="heroGuide" data-i18n="night.guideHero"></p>
+      <a class="hud__return back" href="../index.html"><span class="arrow">←</span> <span data-i18n="night.return"></span></a>
+    </div>
+    <div class="hud__group" data-hud="explore">
+      <div class="container explore__head">
+        <h2 class="serif explore__title" id="exploreTitle" data-i18n="night.limited"></h2>
+        <p class="explore__guide" id="exploreGuide" data-i18n="night.guideExplore"></p>
+      </div>
+      <p class="hud__count"><b id="exploreCount">0</b> / 6 <span data-i18n="night.lit"></span></p>
+    </div>
+    <div class="hud__group scrollcue-wrap" data-hud="cue">
+      <div class="scrollcue" aria-hidden="true"><span data-i18n="night.scroll"></span><i></i><i></i><i></i></div>
+    </div>
+  </div>
+
+  <div class="stand" id="stand">
+    <button type="button" class="stand__btn" id="standBtn" aria-label="Take the flame">
+      <div class="stand__candle"></div>
+    </button>
+    <span class="stand__label" data-i18n="night.take"></span>
+  </div>
+
+  <div class="flame" id="flame" aria-hidden="true"><div class="flame__body"></div></div>
+
+  <div class="fade" id="fade" aria-live="polite">
+    <div class="smoke-wrap" id="smoke" style="position:absolute;left:50%;top:50%">
+      <span class="smoke"></span><span class="smoke"></span><span class="smoke"></span>
+    </div>
+    <p class="fade__lines"><span data-i18n="night.fade1"></span><br><span data-i18n="night.fade2"></span></p>
+  </div>
+
+  <div class="scroll-area" id="scrollArea">
+    <section class="scent" id="scent">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="serif" data-i18n="night.scent"></h2>
+          <p data-i18n="night.scentSub"></p>
+        </div>
+        <div class="scent__list dimlist" id="scentList"></div>
+      </div>
+    </section>
+
+    <section class="event" id="event">
+      <img class="event__img" src="../assets/images/products/event-wax-seal.webp" alt="" loading="lazy">
+      <div class="container grid">
+        <div class="event__text">
+          <p class="event__label" data-i18n="night.eventLabel"></p>
+          <h2 class="serif event__title" data-i18n="night.eventTitle"></h2>
+          <p class="event__price" id="eventPrice"></p>
+          <a class="btn" href="product.html?id=E01"><span data-i18n="night.eventBuy"></span><span class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+    <div data-footer></div>
+  </div>
+
+  <script src="../js/common.js"></script>
+  <script src="../js/night.js"></script>
+</body>
+</html>

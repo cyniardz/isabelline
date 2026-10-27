@@ -1,0 +1,173 @@
+[
+  {
+    "id": "L01",
+    "group": "limited",
+    "no": "No. 01",
+    "name": { "en": "Blood Moon", "ko": "블러드 문" },
+    "price": 46000,
+    "notes": { "en": "Black Cherry, Clove, Amber", "ko": "블랙체리, 정향, 앰버" },
+    "line": { "en": "A red moon rising over a quiet house.", "ko": "고요한 집 위로 떠오르는 붉은 달." },
+    "desc": {
+      "en": "Black cherry and clove warmed by amber. A red glass candle poured for the night the moon turns.",
+      "ko": "앰버로 데운 블랙체리와 정향. 달이 붉게 물드는 밤을 위해 부은 붉은 유리 캔들입니다."
+    },
+    "options": "size",
+    "images": { "off": "01-blood-moon-off.webp", "on": "01-blood-moon-on.webp" }
+  },
+  {
+    "id": "L02",
+    "group": "limited",
+    "no": "No. 02",
+    "name": { "en": "Raven's Night", "ko": "레이븐스 나이트" },
+    "price": 48000,
+    "notes": { "en": "Smoked Cedar, Black Pepper, Leather", "ko": "스모크 시더, 블랙페퍼, 레더" },
+    "line": { "en": "Black wings, cold air, the smell of wood smoke.", "ko": "검은 날개, 차가운 공기, 나무 타는 향." },
+    "desc": {
+      "en": "Smoked cedar and black pepper over soft leather. A black vessel that disappears into the dark until it is lit.",
+      "ko": "부드러운 레더 위에 스모크 시더와 블랙페퍼. 불을 붙이기 전까지 어둠에 숨어 있는 검은 용기입니다."
+    },
+    "options": "size",
+    "images": { "off": "02-ravens-night-off.webp", "on": "02-ravens-night-on.webp" }
+  },
+  {
+    "id": "L03",
+    "group": "limited",
+    "no": "No. 03",
+    "name": { "en": "Queen's Blood", "ko": "퀸즈 블러드" },
+    "price": 52000,
+    "notes": { "en": "Dark Rose, Black Cherry, Oud", "ko": "다크 로즈, 블랙체리, 우드" },
+    "line": { "en": "Dark rose and black cherry over smoked oud.", "ko": "스모크 우드 위에 내려앉은 검붉은 장미와 블랙체리." },
+    "desc": {
+      "en": "Dark rose and black cherry over smoked oud. A deep red candle in an antique bronze holder, poured for the longest night of the year.",
+      "ko": "스모크 우드 위에 검붉은 장미와 블랙체리를 얹었습니다. 앤틱 브론즈 홀더에 담긴 짙은 붉은 캔들, 일년 중 가장 긴 밤을 위해 부었습니다."
+    },
+    "story": { "en": "Lit once a year.", "ko": "일년에 단 하루, 불을 밝힙니다." },
+    "options": "size",
+    "images": {
+      "off": "03-queens-blood-off.webp",
+      "on": "03-queens-blood-on.webp",
+      "detail": "03-queens-blood-detail.webp",
+      "life": "03-queens-blood-life.webp"
+    }
+  },
+  {
+    "id": "L04",
+    "group": "limited",
+    "no": "No. 04",
+    "name": { "en": "Black Amber", "ko": "블랙 앰버" },
+    "price": 49000,
+    "notes": { "en": "Amber, Labdanum, Smoked Vanilla", "ko": "앰버, 라브다넘, 스모크 바닐라" },
+    "line": { "en": "Warm resin that glows in the dark.", "ko": "어둠 속에서 빛나는 따뜻한 레진." },
+    "desc": {
+      "en": "Amber and labdanum with a trace of smoked vanilla. A dark glass that turns gold once the flame catches.",
+      "ko": "앰버와 라브다넘에 스모크 바닐라를 살짝 더했습니다. 불이 붙으면 금빛으로 변하는 어두운 유리입니다."
+    },
+    "options": "size",
+    "images": { "off": "04-black-amber-off.webp", "on": "04-black-amber-on.webp" }
+  },
+  {
+    "id": "L05",
+    "group": "limited",
+    "no": "No. 05",
+    "name": { "en": "Vanilla Noir", "ko": "바닐라 누아르" },
+    "price": 42000,
+    "notes": { "en": "Vanilla Bean, Tonka, Burnt Sugar", "ko": "바닐라 빈, 통카, 번트 슈가" },
+    "line": { "en": "Sweet, but only after midnight.", "ko": "달콤하지만, 자정이 지나서야." },
+    "desc": {
+      "en": "Vanilla bean and tonka with the edge of burnt sugar. The simplest candle of the night, and the softest.",
+      "ko": "바닐라 빈과 통카에 그을린 설탕의 끝맛. 이 밤에서 가장 단순하고, 가장 부드러운 캔들입니다."
+    },
+    "options": "size",
+    "images": { "off": "05-vanilla-noir-off.webp", "on": "05-vanilla-noir-on.webp" }
+  },
+  {
+    "id": "L06",
+    "group": "limited",
+    "no": "No. 06",
+    "name": { "en": "Midnight Pumpkin", "ko": "미드나잇 펌킨" },
+    "price": 45000,
+    "notes": { "en": "Pumpkin, Cinnamon, Nutmeg", "ko": "펌킨, 시나몬, 넛맥" },
+    "line": { "en": "The last lantern left burning on the porch.", "ko": "현관에 마지막까지 켜져 있는 랜턴." },
+    "desc": {
+      "en": "Roasted pumpkin, cinnamon and nutmeg. A hand-carved pumpkin candle that keeps the porch light on.",
+      "ko": "구운 펌킨, 시나몬, 넛맥. 현관의 불을 지켜 주는 손으로 조각한 호박 캔들입니다."
+    },
+    "options": "size",
+    "images": { "off": "06-midnight-pumpkin-off.webp", "on": "06-midnight-pumpkin-on.webp" }
+  },
+  {
+    "id": "S01",
+    "group": "scent",
+    "no": "No. 07",
+    "name": { "en": "Wax Tablet", "ko": "왁스 타블릿" },
+    "price": 22000,
+    "notes": { "en": "Black Amber or Queen's Blood", "ko": "블랙 앰버 또는 퀸즈 블러드" },
+    "line": { "en": "Hang it in a closet or by the door.", "ko": "옷장이나 문가에 걸어 두는 향." },
+    "desc": {
+      "en": "A pressed wax tablet with dried botanicals and a velvet ribbon. Hang it where a flame cannot go.",
+      "ko": "말린 식물과 벨벳 리본을 더한 왁스 타블릿. 불을 켤 수 없는 곳에 걸어 두세요."
+    },
+    "options": "scent",
+    "images": { "main": "scent-01-wax-tablet.webp" }
+  },
+  {
+    "id": "S02",
+    "group": "scent",
+    "no": "No. 08",
+    "name": { "en": "Wax Melt", "ko": "왁스 멜트" },
+    "price": 18000,
+    "notes": { "en": "6 pieces", "ko": "6조각" },
+    "line": { "en": "Melt one piece on a warmer, no flame needed.", "ko": "워머 위에 한 조각씩, 불 없이 녹여 쓰는 향." },
+    "desc": {
+      "en": "Six scented wax pieces for a warmer. Not edible. Melt one at a time and let the room fill slowly.",
+      "ko": "워머에 녹여 쓰는 향 왁스 6조각입니다. 먹을 수 없습니다. 한 조각씩 녹여 방 안을 천천히 채우세요."
+    },
+    "options": null,
+    "images": { "main": "scent-02-wax-melt.webp" }
+  },
+  {
+    "id": "S03",
+    "group": "scent",
+    "no": "No. 09",
+    "name": { "en": "Paper Incense", "ko": "페이퍼 인센스" },
+    "price": 15000,
+    "notes": { "en": "Smoked Cedar, Clove", "ko": "스모크 시더, 정향" },
+    "line": { "en": "Tear a strip and let it smoke for a minute.", "ko": "한 장 뜯어 1분간 피우는 종이 향." },
+    "desc": {
+      "en": "Twelve sheets of scented paper in a folded case. Tear one strip, light the end and blow it out.",
+      "ko": "접이식 케이스에 담긴 향 종이 12장. 한 줄 뜯어 끝에 불을 붙인 뒤 바로 꺼 주세요."
+    },
+    "options": null,
+    "images": { "main": "scent-03-paper-incense.webp" }
+  },
+  {
+    "id": "S04",
+    "group": "scent",
+    "no": "No. 10",
+    "name": { "en": "Candle Warmer", "ko": "캔들 워머" },
+    "price": 68000,
+    "notes": { "en": "Antique Bronze", "ko": "앤틱 브론즈" },
+    "line": { "en": "Lights the wax from above, without a flame.", "ko": "불꽃 없이 위에서 캔들을 녹이는 램프." },
+    "desc": {
+      "en": "An antique bronze lamp that melts a candle from above. Every limited candle fits under it.",
+      "ko": "위에서 캔들을 녹이는 앤틱 브론즈 램프입니다. 모든 한정 캔들에 맞습니다."
+    },
+    "options": null,
+    "images": { "main": "scent-04-candle-warmer.webp" }
+  },
+  {
+    "id": "E01",
+    "group": "event",
+    "no": "No. 11",
+    "name": { "en": "Wax Seal Set", "ko": "왁스 실링 세트" },
+    "price": 38000,
+    "notes": { "en": "Stamp, wax beads, spoon, tea light", "ko": "스탬프, 왁스 비즈, 스푼, 티라이트" },
+    "line": { "en": "Seal your letters for one night.", "ko": "하룻밤을 위해 편지를 봉인하세요." },
+    "desc": {
+      "en": "A brass stamp, deep red wax beads, a melting spoon and a tea light. Choose the seal you want to press.",
+      "ko": "황동 스탬프, 짙은 붉은 왁스 비즈, 멜팅 스푼, 티라이트 구성입니다. 찍고 싶은 씰을 골라 주세요."
+    },
+    "options": "seal",
+    "images": { "main": "event-wax-seal.webp" }
+  }
+]
