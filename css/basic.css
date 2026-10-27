@@ -1,3 +1,7 @@
+html:has(body.basic) {
+  scroll-behavior: smooth;
+}
+
 .hero {
   position: relative;
   height: 100vh;
@@ -100,8 +104,9 @@
 .enter {
   position: absolute;
   z-index: 2;
-  left: 24%;
-  top: 62%;
+  right: var(--grid-margin);
+  top: 52%;
+  text-align: right;
 }
 
 .enter__link {
@@ -109,35 +114,30 @@
   display: inline-flex;
   gap: 14px;
   align-items: center;
-  padding: 15px 26px;
-  font-size: var(--size-label);
+  padding: 10px 0;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--ivory);
-  background: rgba(11, 10, 10, 0.86);
-  box-shadow: 0 0 0 1px rgba(169, 109, 59, 0.35), 0 10px 30px rgba(11, 10, 10, 0.25);
-  transition: background 0.5s var(--ease-soft), box-shadow 0.5s var(--ease-soft);
+  color: var(--black);
+  text-shadow: 0 0 14px rgba(243, 238, 227, 0.95);
+  transition: color 0.5s var(--ease-soft);
 }
 
 .enter__link::after {
   content: "";
   position: absolute;
-  inset: -18px;
+  inset: -22px -34px;
   z-index: -1;
-  border-radius: 40px;
-  background: radial-gradient(ellipse at center, rgba(252, 170, 96, 0.45), rgba(252, 170, 96, 0) 70%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(252, 170, 96, 0.5), rgba(252, 170, 96, 0) 70%);
   animation: ember 3.2s ease-in-out infinite;
 }
 
-.enter__link:hover,
-.enter__link:focus-visible {
-  background: rgba(11, 10, 10, 0.96);
-  box-shadow: 0 0 0 1px rgba(252, 212, 152, 0.6), 0 10px 34px rgba(11, 10, 10, 0.3);
-}
-
-.enter__link:hover::after {
+.enter__link:hover::after,
+.enter__link:focus-visible::after {
   animation-duration: 1.4s;
+  background: radial-gradient(ellipse at center, rgba(252, 160, 80, 0.7), rgba(252, 170, 96, 0) 70%);
 }
 
 @keyframes ember {
@@ -146,8 +146,7 @@
 }
 
 .enter__date {
-  margin-top: 12px;
-  padding-left: 2px;
+  margin-top: 6px;
   font-size: var(--size-label);
   letter-spacing: 0.08em;
   color: rgba(11, 10, 10, 0.72);

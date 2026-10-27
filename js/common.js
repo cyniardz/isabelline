@@ -155,7 +155,7 @@
       header.className = "nav";
       header.innerHTML =
         '<div class="container grid">' +
-        '<a class="nav__logo" href="' + base + 'index.html">ISABELLINE</a>' +
+        '<a class="nav__logo" href="' + (night ? base + "index.html#top" : "#top") + '">ISABELLINE</a>' +
         '<nav class="nav__menu dimlist">' +
         '<button class="lang" type="button" aria-label="Language"><span data-lang="ko">KR</span> / <span data-lang="en">EN</span></button>' +
         menu.map((m) => '<a href="' + m[1] + '" data-i18n="' + m[0] + '"></a>').join("") +

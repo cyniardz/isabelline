@@ -69,7 +69,7 @@
     "night.scroll": "Scroll",
     "night.lit": "lit",
     "night.limited": "Limited candle",
-    "night.guideExplore": "Bring the flame close.",
+    "night.guideExplore": "Bring the flame to a candle.",
     "night.hintExplore": "Bring the flame close. Scroll once more to move on.",
     "night.fade1": "The flame is gone.",
     "night.fade2": "The scent remains.",
@@ -134,7 +134,18 @@
     "f.terms": "Terms",
     "f.privacy": "Privacy",
     "f.note": "2026 ISABELLINE. A portfolio project, not a real store.",
-    "p.soon": "Image coming soon"
+    "p.soon": "Image coming soon",
+    "night.toDay": "Back to daylight",
+    "night.toTop": "Back to the start of the night",
+    "intro.s1": "Door",
+    "intro.s2": "Flame",
+    "intro.s3": "Night",
+    "intro.l1": "Someone knocks at the door.",
+    "intro.l2": "The door opens.",
+    "intro.l3": "A flame catches.",
+    "intro.l4": "Take it, and walk into the night.",
+    "night.scrollUp": "Scroll up",
+    "p.view": "View details"
   },
   "ko": {
     "nav.about": "브랜드 이야기",
@@ -168,7 +179,7 @@
     "night.scroll": "Scroll",
     "night.lit": "밝힘",
     "night.limited": "한정 캔들",
-    "night.guideExplore": "불꽃을 가까이 가져가 보세요.",
+    "night.guideExplore": "불꽃을 상품에 가져가 보세요.",
     "night.hintExplore": "불꽃을 가까이 가져가 보세요. 한 번 더 스크롤하면 넘어갑니다.",
     "night.fade1": "불꽃은 꺼져도,",
     "night.fade2": "향은 남습니다.",
@@ -233,6 +244,17 @@
     "f.terms": "이용약관",
     "f.privacy": "개인정보처리방침",
     "f.note": "2026 ISABELLINE. 포트폴리오용 가상 브랜드입니다.",
-    "p.soon": "이미지 준비 중"
+    "p.soon": "이미지 준비 중",
+    "night.toDay": "낮으로 돌아가기",
+    "night.toTop": "밤의 처음으로",
+    "intro.s1": "문",
+    "intro.s2": "불",
+    "intro.s3": "밤",
+    "intro.l1": "누군가 문을 두드린다.",
+    "intro.l2": "문이 열린다.",
+    "intro.l3": "불이 켜진다.",
+    "intro.l4": "불을 들고, 밤으로.",
+    "night.scrollUp": "위로 스크롤",
+    "p.view": "자세히 보기"
   }
 }
